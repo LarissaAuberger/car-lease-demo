@@ -38,7 +38,7 @@ function enrollRegistrar(chain, username, secret) {
     return new Promise(function(resolve, reject) {
         chain.enroll(username, secret, function(err, registrar) {
             if (!err) {
-                tracing.create('INFO', 'Startup', 'Enrolled registrar');
+                tracing.create('INFO', 'Startup', 'Enrolled registrar with' +username + ' ' + secret);
                 resolve(registrar);
             } else {
                 tracing.create('ERROR', 'Startup', 'Failed to enroll registrar with '+username + ' ' + secret);
@@ -56,6 +56,7 @@ function enrollUser(chain, user) {
             if (!err){
                         // Successfully enrolled registrar and set this user as the chain's registrar which is authorized to register other users.
                 tracing.create('INFO', 'Startup', 'Registrar enroll worked with user '+user.enrollmentID);
+                tracing.create('INFO', 'Startup', 'Registrar enroll worked with user '+user.enrollSecret);
                 resolve(enrolledUser);
             }
             else{
