@@ -56,7 +56,7 @@ function enrollUser(chain, user) {
             if (!err){
                         // Successfully enrolled registrar and set this user as the chain's registrar which is authorized to register other users.
                 tracing.create('INFO', 'Startup', 'Registrar enroll worked with user '+user.enrollmentID);
-                tracing.create('INFO', 'Startup', 'Registrar enroll worked with user '+user.enrollSecret);
+                tracing.create('INFO', 'Startup', 'Registrar enroll worked with user '+user.secret);
                 resolve(enrolledUser);
             }
             else{
